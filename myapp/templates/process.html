@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} Processed Image {% endblock %}
+
+{% block content %}
+
+<div class="demoHead">   
+  <div>
+    <div style="float:left;">
+      <h1>Filtered Image Result</h1>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+</div>
+
+<div style="text-align: center; padding-top: 40px;">
+  <h2>Here's your processed image:</h2>
+
+  {% if outputfilename %}
+    <img src="/media/output/{{ outputfilename }}" alt="Processed Image" style="max-width: 500px; border: 1px solid #ccc; margin-bottom: 20px;"><br>
+    <a href="/media/output/{{ outputfilename }}" download>
+      <button class="btn btn-success">Download Image</button>
+    </a>
+  {% else %}
+    <p>No image was processed. Please go back and try again.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

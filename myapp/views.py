@@ -3,11 +3,14 @@ from .form import UploadFileForm
 from PIL import Image, ImageOps, ImageFilter
 import os
 from django.conf import settings
+from datetime import datetime
 
 def apply_filter(input_path, preset):
     name, ext = os.path.splitext(os.path.basename(input_path))
-    output_name = f"{name}_out.jpg"
+    timestamp = datetime.now().strftime('%Y%m%H%M%S')
+    output_name = f"{name}_{preset}_{timestamp}.jpg"
     output_path = os.path.join(settings.MEDIA_ROOT, 'output', output_name)
+    
 
     im = Image.open(input_path)
 
